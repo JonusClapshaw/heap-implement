@@ -31,6 +31,14 @@ public class Heap <T extends Comparable<T>> {
         return (currentIndex - 1) / 2;
     }
 
+    private int childIndexLeft(int currentIndex) {
+        return ();
+    }
+
+    private int childIndexRight(int currentIndex) {
+        return ();
+    }
+
     public void add(T data) {
         newHeap.add(data);
         int currentIndex = newHeap.size() - 1;
@@ -46,6 +54,37 @@ public class Heap <T extends Comparable<T>> {
                 newHeap.set(currentIndex, temp);
 
                 currentIndex = parent;
+            } else {
+                break;
+            }
+        }
+    }
+
+    public void Pop(T data) {
+        newHeap.set(0, newHeap.getLast());
+        newHeap.removeLast();
+
+        int currentIndex = 0;
+
+        while(currentIndex < newHeap.size()) {
+            int child = 0;
+
+            if(childIndexLeft(currentIndex) < childIndexRight(currentIndex)){
+                child = childIndexLeft(currentIndex);
+            } else if (childIndexLeft(currentIndex) > childIndexRight(currentIndex)){
+                child = childIndexRight(currentIndex);
+            } else {
+                break;
+            }
+
+            if(newHeap.get(currentIndex).compareTo(newHeap.get(child)) > 0){
+                T temp = newHeap.get(child);
+
+                newHeap.set(child, newHeap.get(currentIndex));
+
+                newHeap.set(currentIndex, temp);
+
+                currentIndex = child;
             } else {
                 break;
             }

@@ -4,7 +4,7 @@ import org.junit.Test;
 public class HeapTest {
 
     @Test
-    public void testAdd() {
+    public void testAddDifferentOrder() {
         Heap<Integer> heap = new Heap<>();
 
         heap.add(10);
@@ -18,5 +18,17 @@ public class HeapTest {
 
         assertEquals(4, heap.newHeap.size());
         assertEquals(Integer.valueOf(15), heap.newHeap.get(1));
+    }
+
+    @Test 
+    public void testAddAllSameNumbers() {
+        Heap<Integer> heap = new Heap<>();
+
+        heap.add(1);
+        heap.add(1);
+        heap.add(1);
+
+        assertEquals(3, heap.newHeap.size());
+        assertEquals(Integer.valueOf(1), heap.newHeap.get(0));
     }
 }
